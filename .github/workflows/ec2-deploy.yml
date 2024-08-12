@@ -19,7 +19,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 14
+        node-version: 20
 
     - name: Install dependencies
       run: npm install
@@ -75,18 +75,18 @@ jobs:
           export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
           export AWS_REGION=${AWS_REGION}
 
-            echo "Logging in to ECR...."
-            aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 817722091681.dkr.ecr.af-south-1.amazonaws.com
-            echo "Logged in successful..."
+          echo "Logging in to ECR...."
+          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 817722091681.dkr.ecr.af-south-1.amazonaws.com
+          echo "Logged in successful..."
 
-            echo "Pulling  image from ECR..."
-            echo "Docker pull command: docker pull \"${{ secrets.AWS_REGISTRY_URL }}/${{ secrets.REPOSITORY_NAME }}:${{ env.TAG }}\""
-            echo "Docker pull completed..."
+          echo "Pulling  image from ECR..."
+          echo "Docker pull command: docker pull \"${{ secrets.AWS_REGISTRY_URL }}/${{ secrets.REPOSITORY_NAME }}:${{ env.TAG }}\""
+          echo "Docker pull completed..."
 
-            echo "Running the container..."
-            docker run -d \
-              --name bb_internal_api \
-              --env-file  /path/to/dot/env \
-              -p ${{ secrets.EXPOSED_PORT }}:${{ secrets.APPLICATION_PORT }} "${{ secrets.AWS_REGISTRY_URL }}/${{ secrets.REPOSITORY_NAME }}:${{ env.TAG }}"
+          echo "Running the container..."
+          docker run -d \
+            --name bb_internal_api \
+            --env-file  /path/to/dot/env \
+            -p ${{ secrets.EXPOSED_PORT }}:${{ secrets.APPLICATION_PORT }} "${{ secrets.AWS_REGISTRY_URL }}/${{ secrets.REPOSITORY_NAME }}:${{ env.TAG }}"
 
 
