@@ -36,7 +36,6 @@ jobs:
         echo "AWS_REGISTRY_URL: ${{ secrets.AWS_REGISTRY_URL }}"
         echo "Generated Docker tag:  $TAG"
 
-
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
