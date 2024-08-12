@@ -3,7 +3,7 @@ name: Deploy to ECR
 on:
  
   push:
-    branches: [ master ]
+    branches: [ staging ]
 
 env:
   ECR_REPOSITORY: flask-app
