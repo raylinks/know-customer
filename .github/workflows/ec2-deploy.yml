@@ -24,7 +24,6 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-
     - name: Build Docker image and set Docker tag with TAG
       run: |
         echo "Generated Docker tag: $TAG"
