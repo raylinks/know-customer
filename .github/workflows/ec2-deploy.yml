@@ -44,7 +44,7 @@ jobs:
 
     - name: Push Docker image to Amazon ECR
       run: |
-        aws ecr get-login-password --region af-south-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_REGISTRY_URL }}
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_REGISTRY_URL }}
         docker push "${{ secrets.AWS_REGISTRY_URL }}/${{ secrets.REPOSITORY_NAME }}:${TAG}"
 
     - name: SSH into EC2 instance and deploy
@@ -74,7 +74,7 @@ jobs:
           export AWS_REGION=${AWS_REGION}
 
           echo "Logging in to ECR...."
-          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 817722091681.dkr.ecr.af-south-1.amazonaws.com
+          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 817722091681.dkr.ecr.us-east-1.amazonaws.com
           echo "Logged in successful..."
 
           echo "Pulling  image from ECR..."
