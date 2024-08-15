@@ -29,7 +29,7 @@ jobs:
       run: |
         echo "Generated Docker tag: $TAG"
         docker build -t "${{ secrets.REPOSITORY_NAME }}" .
-        docker tag "${{ secrets.REPOSITORY_NAME }}" "${{ secrets.AWS_REGISTRY_URL }}/${{ secrets.REPOSITORY_NAME }}:${TAG}"
+        docker tag "${{ secrets.REPOSITORY_NAME }}" "${{ secrets.AWS_REGISTRY_URL }}/${{ secrets.REPOSITORY_NAME }}:$TAG"
 
     - name: Debug Environment Variables
       run: |
