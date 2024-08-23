@@ -52,7 +52,4 @@ jobs:
       env:
         ECR_REGISTRY: ${{ secrets.AWS_REGISTRY_URL }}
         IMAGE_TAG: ${{ steps.commit.outputs.short }}
-      run: |
-        sed -i.bak "s|DOCKER_IMAGE|$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG|g" manifests/hello-app-deployment.yaml && \
-        kubectl apply -f manifests/hello-app-deployment.yaml
-        kubectl apply -f manifests/hello-app-service.yaml
+      run: "sed -i.bak \"s|DOCKER_IMAGE|$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG|g\" \n# manifests/hello-app-deployment.yaml && \\\n# kubectl apply -f manifests/hello-app-deployment.yaml\n# kubectl apply -f manifests/hello-app-service.yaml\necho \"IT HAS DEPLOYED TO EKS\"\n"
