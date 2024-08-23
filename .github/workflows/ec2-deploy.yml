@@ -3,7 +3,7 @@ name: Node.js API Deployment EC2
 on:
   push:
     branches:
-    - main
+    - staging
 
 jobs:
   deploy:
