@@ -15,6 +15,7 @@ const env = JSON.parse(process.env.APP_SECRETS ?? '{}');
 
 // app.use(bodyParser.json())
 
+//commented
 // unleash.on('synchronized', () => {
 //   l.info('Feature flags loaded');
 // });
