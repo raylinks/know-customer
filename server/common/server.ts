@@ -21,6 +21,7 @@ const env = JSON.parse(process.env.APP_SECRETS ?? '{}');
 // });
 
 export default class ExpressServer {
+  
   private routes: (app: Application) => void;
   constructor() {
     const root = path.normalize(__dirname + '/../..');
